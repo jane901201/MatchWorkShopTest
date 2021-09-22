@@ -18,7 +18,8 @@ public class PlayerTrigger : MonoBehaviour
 
     private void WhichTag(string tag)
     {
-        switch(tag)
+        Debug.Log("This tag is " + tag);
+        switch (tag)
         {
             case "Item":
                 Item();
@@ -35,6 +36,7 @@ public class PlayerTrigger : MonoBehaviour
     {
         ItemSetting itemSetting = m_CurrectTouchObj.GetComponent<ItemSetting>();
         List<Item> items = itemSetting.GetItems();
+        //TODO:m_SetInventoryItem.Invoke(items);
     }
 
     private void End()

@@ -16,6 +16,11 @@ public class InventorySystem : MonoBehaviour
 
     public bool IsItemUpdate { get => m_IsItemUpdate; set => m_IsItemUpdate = value; }
 
+    private void Awake()
+    {
+        IsItemUpdate = true; //TODO:Test
+    }
+
     public List<Item> GetInventoryWillShowItems()
     {
         return m_WillShowItems;

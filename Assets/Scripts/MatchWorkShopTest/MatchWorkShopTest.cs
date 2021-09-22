@@ -2,17 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MatchWorkShopTest : MonoBehaviour
+public partial class MatchWorkShopTest : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [Header("GameSystem")]
+    [SerializeField] private InventorySystem m_InventorySystem;
+
+    [Header("UI")]
+    [SerializeField] private InventoryUIController m_InventoryUIController;
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         
+    }
+
+    private void RestartGame()
+    {
+
     }
 }
