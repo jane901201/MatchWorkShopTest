@@ -3363,6 +3363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f222e2d12b90ef94faa81464db35afd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Animator: {fileID: 1257099839}
   m_Rigidbody2D: {fileID: 1956018444}
   m_PlayerSpeed: 4
 --- !u!114 &853402230
@@ -4373,6 +4374,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1956018443}
     m_Modifications:
+    - target: {fileID: -8091106195481170888, guid: 5dd5cd6dbca2b454f87fdcfb48646ad8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.713124
+      objectReference: {fileID: 0}
+    - target: {fileID: -8091106195481170888, guid: 5dd5cd6dbca2b454f87fdcfb48646ad8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8091106195481170888, guid: 5dd5cd6dbca2b454f87fdcfb48646ad8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8091106195481170888, guid: 5dd5cd6dbca2b454f87fdcfb48646ad8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.70103794
+      objectReference: {fileID: 0}
+    - target: {fileID: -8091106195481170888, guid: 5dd5cd6dbca2b454f87fdcfb48646ad8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -400554977046717921, guid: 5dd5cd6dbca2b454f87fdcfb48646ad8, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -4437,6 +4458,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 146.872
       objectReference: {fileID: 0}
+    - target: {fileID: 4133260958141791382, guid: 5dd5cd6dbca2b454f87fdcfb48646ad8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.6543023
+      objectReference: {fileID: 0}
+    - target: {fileID: 4133260958141791382, guid: 5dd5cd6dbca2b454f87fdcfb48646ad8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.00000031587777
+      objectReference: {fileID: 0}
     - target: {fileID: 8094792970427910815, guid: 5dd5cd6dbca2b454f87fdcfb48646ad8, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.21346962
@@ -4476,7 +4505,7 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 8c09c156df374c04c9478c16f76fba36, type: 2}
-  m_CullingMode: 1
+  m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
