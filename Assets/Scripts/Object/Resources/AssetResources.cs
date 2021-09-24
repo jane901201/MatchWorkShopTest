@@ -7,7 +7,7 @@ public class AssetResources : IResources
     private const string EffectPath = "Effects/";
     private const string SpritePath = "Sprites/";
     private const string SaveDataPath = "SaveData/";
-    private const string ItemPath = "Sprites/Item";
+    private const string ItemPath = "Sprites/Item/";
 
     public override GameObject LoadPlayer(string PlayerName)
     {
@@ -46,5 +46,17 @@ public class AssetResources : IResources
         return res;
     }
 
+    public override Sprite LoadItem(string ItemSpriteName)
+    {
+        Sprite res = Resources.Load<Sprite>(ItemPath + ItemSpriteName);
+
+        if (res == null)
+        {
+            Debug.Log("無法載入路徑" + ItemPath + ItemSpriteName);
+            return null;
+        }
+
+        return res;
+    }
 }
 
