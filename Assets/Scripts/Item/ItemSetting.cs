@@ -14,6 +14,11 @@ public class ItemSetting : MonoBehaviour
         return m_Items;
     }
 
+    public void SetInitialItems(List<Item> items)
+    {
+        m_Items = items;
+    }
+
     public void IncreaseItemAmount(Item increaseItem, int num)
     {
         if (IsHaveItem_WillSettingItemIfHave(increaseItem))
@@ -32,6 +37,7 @@ public class ItemSetting : MonoBehaviour
         if (IsHaveItem_WillSettingItemIfHave(decreaseItem))
         {
             int index = m_Items.IndexOf(m_MustBeSettingItem);
+            m_Items[index].Amount -= num;
         }
         else
         {

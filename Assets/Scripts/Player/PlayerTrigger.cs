@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class PlayerTrigger : MonoBehaviour
 {
 
-    [SerializeField] private UnityEvent<List<Item>> m_SetInventoryItem;
+    [SerializeField] private UnityEvent<List<Item>> m_SetGettingItem;
     [SerializeField] private UnityEvent m_ShowWantToRestartInfo;
 
     private GameObject m_CurrectTouchObj;
@@ -38,7 +38,7 @@ public class PlayerTrigger : MonoBehaviour
     {
         ItemSetting itemSetting = m_CurrectTouchObj.GetComponent<ItemSetting>();
         List<Item> items = itemSetting.GetItems();
-        //TODO:m_SetInventoryItem.Invoke(items);
+        m_SetGettingItem.Invoke(items);
         m_CurrectTouchObj.SetActive(false);
     }
 

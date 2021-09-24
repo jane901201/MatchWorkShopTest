@@ -26,6 +26,11 @@ public class InventorySystem : MonoBehaviour
         SetWillShowItems();
     }
 
+    public void SetInitinalInventoryItems(List<Item> items)
+    {
+        m_InventoryItem.SetInitialItems(items);
+    }
+
     public List<Item> GetInventoryWillShowItems()
     {
         return m_WillShowItems;
@@ -54,6 +59,10 @@ public class InventorySystem : MonoBehaviour
     {
         m_IsItemUpdate = true;
         m_GetGettingItems = items;
+        for(int i = 0; i < m_GetGettingItems.Count; i++)
+        {
+            DecreaseItemAmount(m_GetGettingItems[i], m_GetGettingItems[i].Amount);
+        }
     }
 
     public void IncreaseItemAmount(Item item, int amount)

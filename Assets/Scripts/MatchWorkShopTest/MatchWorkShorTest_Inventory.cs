@@ -10,6 +10,21 @@ public partial class MatchWorkShopTest
         m_InventoryUIController.ShowMainUI();
     }
 
+    public void SetGettingItem(List<Item> items)
+    {
+        m_InventorySystem.SetGettingItem(items);
+    }
+
+    public void SetBeUsedItem(List<Item> items)
+    {
+        m_InventorySystem.SetBeUsedItems(items);
+    }
+
+    public void SetInitinalInventoryItems(List<Item> items)
+    {
+        m_InventorySystem.SetInitinalInventoryItems(items);
+    }
+
     public void InventoryUI_ShowItemInformation(int i)
     {
         m_InventoryUIController.ShowItemInformation(i);
