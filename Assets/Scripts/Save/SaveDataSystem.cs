@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class SaveDataSystem : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private List<Item> m_InventoryItem;
+
+    SaveDataFile m_SaveDataFile = new SaveDataFile();
+
+
+    private void Awake()
+    {
+        m_SaveDataFile.Initinal();
+    }
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public void RecoverData()
     {
-        
+
     }
 }

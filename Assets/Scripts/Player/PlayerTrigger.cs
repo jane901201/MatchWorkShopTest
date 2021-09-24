@@ -7,6 +7,8 @@ public class PlayerTrigger : MonoBehaviour
 {
 
     [SerializeField] private UnityEvent<List<Item>> m_SetInventoryItem;
+    [SerializeField] private UnityEvent m_ShowWantToRestartInfo;
+
     private GameObject m_CurrectTouchObj;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -18,7 +20,7 @@ public class PlayerTrigger : MonoBehaviour
 
     private void WhichTag(string tag)
     {
-        Debug.Log("This tag is " + tag);
+        //Debug.Log("This tag is " + tag);
         switch (tag)
         {
             case "Item":
@@ -41,6 +43,7 @@ public class PlayerTrigger : MonoBehaviour
 
     private void End()
     {
-
+        Debug.Log("End Function");
+        m_ShowWantToRestartInfo.Invoke();
     }
 }

@@ -6,9 +6,11 @@ public partial class MatchWorkShopTest : MonoBehaviour
 {
     [Header("GameSystem")]
     [SerializeField] private InventorySystem m_InventorySystem;
+    [SerializeField] private SaveDataSystem m_SaveDataSystem;
 
     [Header("UI")]
     [SerializeField] private InventoryUIController m_InventoryUIController;
+    [SerializeField] private DataCheckInfoUIController m_DataCheckInfoUIController;
 
     void Start()
     {
@@ -20,8 +22,8 @@ public partial class MatchWorkShopTest : MonoBehaviour
         
     }
 
-    private void RestartGame()
+    public void RestartGame()
     {
-
+        Debug.Log("RestartGame");
     }
 }
