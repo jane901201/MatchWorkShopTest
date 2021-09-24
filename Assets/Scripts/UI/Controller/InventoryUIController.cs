@@ -33,6 +33,7 @@ public class InventoryUIController : IUserInterface
     private void Start()
     {
         m_AssetResources = new AssetResources();
+        SetCloseUIBtn();
     }
 
 
@@ -91,6 +92,11 @@ public class InventoryUIController : IUserInterface
         IsItemUpdate = false;
     }
 
+    private void SetCloseUIBtn()
+    {
+        m_CloseInventoryUIBtn.onClick.AddListener(() => HideMainUI());
+    }
+
     private void SetItemBtn()
     {
         int total = m_InventoryItems.Count;
@@ -108,11 +114,11 @@ public class InventoryUIController : IUserInterface
             //Debug.Log(tmpItemObj.GetType().ToString());
             Button tmpItemBtn = tmpItemObj.GetComponent<Button>();
             //Debug.Log("Button " + tmpItemBtn);
-            //ItemTrigger tmpItemTrigger = tmpItemObj.GetComponent<ItemTrigger>();
+            ItemInformationButtonTrigger tmpItemTrigger = tmpItemObj.GetComponent<ItemInformationButtonTrigger>();
 
             m_ItemBtns.Add(tmpItemBtn);
             m_ItemNumber.Add(tmpItemBtn, i);
-            //tmpItemTrigger.Number = i;
+            tmpItemTrigger.Number = i;
 
             tmpItemObj = SetItemObjChildUI(tmpItemObj, i);
             tmpItemBtn = SetItemBtnState(tmpItemBtn);
@@ -121,9 +127,8 @@ public class InventoryUIController : IUserInterface
 
     private GameObject SetItemObjChildUI(GameObject item, int i)
     {
-        //List:ItemImage, ItemName, ItemPrice
+        //List:ItemImage, Image, ItemAmount
         Image itemImage = null;
-        Text itemName = null;
         Text itemAmount = null;
 
         for (int j = 0; j < item.transform.childCount; j++)
@@ -134,7 +139,7 @@ public class InventoryUIController : IUserInterface
                     itemImage = item.transform.GetChild(j).gameObject.GetComponent<Image>();
                     break;
                 case 1:
-                    itemName = item.transform.GetChild(j).gameObject.GetComponent<Text>();
+                    //itemName = item.transform.GetChild(j).gameObject.GetComponent<Text>();
                     break;
                 case 2:
                     itemAmount = item.transform.GetChild(j).gameObject.GetComponent<Text>();
@@ -146,7 +151,6 @@ public class InventoryUIController : IUserInterface
         }
 
         m_ItemImages.Add(itemImage);
-        m_ItemNames.Add(itemName);
         m_ItemAmount.Add(itemAmount);
 
         SetItemChildState(i);
@@ -157,21 +161,8 @@ public class InventoryUIController : IUserInterface
     private void SetItemChildState(int i)
     {
         //TODO:m_ItemImages[i].sprite = m_Resources.LoadSprite(m_InventoryItems[i].ItemImageName);
-        m_ItemNames[i].text = m_InventoryItems[i].ItemName;
         m_ItemAmount[i].text = m_InventoryItems[i].Amount.ToString();
     }
-
-    private void SetItemChildState()
-    {
-        for (int i = 0; i < m_InventoryItems.Count; i++)
-        {
-            //TODO:m_ItemImages[i].sprite = m_Resources.LoadSprite(m_InventoryItems[i].ItemImageName);
-            m_ItemNames[i].text = m_InventoryItems[i].ItemName;
-            m_ItemAmount[i].text = m_InventoryItems[i].Amount.ToString();
-        }
-    }
-
-
 
     private Button SetItemBtnState(Button item)
     {

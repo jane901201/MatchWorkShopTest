@@ -12,6 +12,7 @@ public class DataCheckInfoUIController : IUserInterface
 
     [Header("MatchWorkShopTest")]
     [SerializeField] private UnityEvent m_RestartGame;
+    [SerializeField] private UnityEvent m_SetPlayerMap;
 
     public override void ShowMainUI()
     {
@@ -27,7 +28,10 @@ public class DataCheckInfoUIController : IUserInterface
     {
         m_InformationText.text = "重新開始遊戲?";
         m_YesBtn.onClick.AddListener(() => m_RestartGame.Invoke());
-        m_NoBtn.onClick.AddListener(() => HideMainUI());
+        m_NoBtn.onClick.AddListener(delegate() {
+            HideMainUI();
+            m_SetPlayerMap.Invoke();
+        });
     }
 
 }

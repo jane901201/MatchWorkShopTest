@@ -21,6 +21,11 @@ public class InventorySystem : MonoBehaviour
         IsItemUpdate = true; //TODO:Test
     }
 
+    private void Start()
+    {
+        SetWillShowItems();
+    }
+
     public List<Item> GetInventoryWillShowItems()
     {
         return m_WillShowItems;
@@ -49,8 +54,6 @@ public class InventorySystem : MonoBehaviour
     {
         m_IsItemUpdate = true;
         m_GetGettingItems = items;
-
-
     }
 
     public void IncreaseItemAmount(Item item, int amount)

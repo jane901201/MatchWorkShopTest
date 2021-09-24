@@ -12,5 +12,6 @@ public partial class MatchWorkShopTest
     {
         m_DataCheckInfoUIController.ShowMainUI();
         m_DataCheckInfoUIController.ShowWantToRestartInfo();
+        SetMatchWorkShopTestUIMap();
     }
 }

@@ -7,6 +7,7 @@ public partial class MatchWorkShopTest : MonoBehaviour
     [Header("GameSystem")]
     [SerializeField] private InventorySystem m_InventorySystem;
     [SerializeField] private SaveDataSystem m_SaveDataSystem;
+    [SerializeField] private PlayerInputController m_PlayerInputController;
 
     [Header("UI")]
     [SerializeField] private InventoryUIController m_InventoryUIController;
@@ -25,5 +26,6 @@ public partial class MatchWorkShopTest : MonoBehaviour
     public void RestartGame()
     {
         Debug.Log("RestartGame");
+        //TODO:m_SaveDataSystem.RecoverData();
     }
 }

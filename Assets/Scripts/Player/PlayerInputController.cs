@@ -16,6 +16,7 @@ public class PlayerInputController : MonoBehaviour
     private void Awake()
     {
         m_PlayerInput = GetComponent<PlayerInput>();
+        Debug.Log("PlayerInput " + m_PlayerInput.currentActionMap);
     }
 
     private void FixedUpdate()
@@ -28,5 +29,22 @@ public class PlayerInputController : MonoBehaviour
     {
         m_PlayerMovement = inputValue.Get<Vector2>();
         m_PlayerMovementX = m_PlayerMovement.x;
+    }
+
+    private void OnJump(InputValue inputValue)
+    {
+        Debug.Log("Jump");
+        //TODO:Jump
+    }
+
+    public void SetPlayerMap()
+    {
+        m_PlayerInput.SwitchCurrentActionMap("Player");
+    }
+
+    public void SetMatchWorkShopTestUIMap()
+    {
+        //Debug.Log(m_PlayerInput.currentActionMap);
+        m_PlayerInput.SwitchCurrentActionMap("MatchWorkShopTestUI");
     }
 }

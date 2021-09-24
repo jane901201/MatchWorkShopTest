@@ -39,6 +39,7 @@ public class PlayerTrigger : MonoBehaviour
         ItemSetting itemSetting = m_CurrectTouchObj.GetComponent<ItemSetting>();
         List<Item> items = itemSetting.GetItems();
         //TODO:m_SetInventoryItem.Invoke(items);
+        m_CurrectTouchObj.SetActive(false);
     }
 
     private void End()

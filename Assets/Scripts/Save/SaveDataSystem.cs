@@ -2,16 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class SaveDataSystem : MonoBehaviour
 {
-    [SerializeField] private List<Item> m_InventoryItem;
-
-    SaveDataFile m_SaveDataFile = new SaveDataFile();
+    [SerializeField] private SaveDataFile m_SaveDataFile;
 
 
     private void Awake()
     {
-        m_SaveDataFile.Initinal();
+
     }
 
     void Start()

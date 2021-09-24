@@ -5,6 +5,11 @@ using UnityEngine;
 
 public partial class MatchWorkShopTest
 {
+    public void ShowInventoryUI()
+    {
+        m_InventoryUIController.ShowMainUI();
+    }
+
     public void InventoryUI_ShowItemInformation(int i)
     {
         m_InventoryUIController.ShowItemInformation(i);
