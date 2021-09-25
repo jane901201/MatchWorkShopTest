@@ -123,7 +123,17 @@ public class InventoryUIController : IUserInterface
 
     private void SetUseBtn()
     {
-        m_UseBtn.onClick.AddListener(() => DecreaseItemAmount(m_CurrectItemNum));
+        m_UseBtn.onClick.AddListener( delegate()
+        {
+            if(m_LongClickButton.IsUseItem)
+            {                
+                m_LongClickButton.IsUseItem = false;
+            }
+            else
+            {                
+                DecreaseItemAmount(m_CurrectItemNum);
+            }
+        });
         m_LongClickButton.SetLongClickEvent(UseCurrectItem);
     }
 
