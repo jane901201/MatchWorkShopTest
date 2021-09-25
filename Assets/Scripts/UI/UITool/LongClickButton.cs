@@ -11,21 +11,21 @@ public class LongClickButton : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 
     [SerializeField] private float m_RequiredHoldTime;
     private Action m_LongClickEvent;
-    private bool m_IsUseItem = false;
+    private bool m_IsLongPress = false;
 
-    public bool IsUseItem { get => m_IsUseItem; set => m_IsUseItem = value; }
+    public bool IsLongPress { get => m_IsLongPress; set => m_IsLongPress = value; }
 
     private void Update()
     {
-        Debug.Log(m_IsUseItem);
+        //Debug.Log(m_PointDownTimer);
         if(m_PointerDown)
         {
             m_PointDownTimer += Time.deltaTime;
+            m_IsLongPress = true;
             if(m_PointDownTimer >= m_RequiredHoldTime)
             {
                 Reset();
                 LongClickEvent();
-                m_IsUseItem = true;
             }
         }
     }
@@ -50,8 +50,10 @@ public class LongClickButton : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 
     private void Reset()
     {
+        //m_PointerDown = false;
         //Debug.Log("PointerDown " + m_PointerDown);
         m_PointDownTimer = 0f;
+        m_IsLongPress = false;
     }
 
     private void LongClickEvent()
