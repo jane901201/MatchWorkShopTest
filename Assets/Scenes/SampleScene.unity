@@ -4161,6 +4161,11 @@ MonoBehaviour:
       m_Image: key
       m_Information: "\u7591\u4F3C\u6709\u9632\u76DC\u82AF\u7247\u7684\u9470\u5319\r"
       m_Amount: 0
+    m_WorldItems:
+    - {fileID: 828584939}
+    - {fileID: 666177876}
+    - {fileID: 1452771178}
+    m_PlayerInitinalTransform: {fileID: 81681064}
   m_SetInitinalInventoryItems:
     m_PersistentCalls:
       m_Calls:
@@ -4177,11 +4182,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   m_Player: {fileID: 1956018441}
-  m_StartPoint: {fileID: 81681064}
-  m_WorldItems:
-  - {fileID: 828584939}
-  - {fileID: 666177876}
-  - {fileID: 1452771178}
 --- !u!1 &575937843
 GameObject:
   m_ObjectHideFlags: 0
