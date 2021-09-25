@@ -32,7 +32,7 @@ public partial class MatchWorkShopTest
 
     public bool IsItemUpdate()
     {
-        Debug.Log("Item is updated " + m_InventorySystem.IsItemUpdate);
+        //Debug.Log("Item is updated " + m_InventorySystem.IsItemUpdate);
         return m_InventorySystem.IsItemUpdate;
     }
 

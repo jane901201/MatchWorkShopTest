@@ -140,11 +140,11 @@ public class InventoryUIController : IUserInterface
         {
             GameObject tmpItemObj = GameObject.Find("Item" + i);
             Button tmpItemBtn = tmpItemObj.GetComponent<Button>();
-            ItemInformationButtonTrigger tmpItemTrigger = tmpItemObj.GetComponent<ItemInformationButtonTrigger>();
+            //ItemInformationButtonTrigger tmpItemTrigger = tmpItemObj.GetComponent<ItemInformationButtonTrigger>();
 
             m_ItemBtns.Add(tmpItemBtn);
             m_ItemNumber.Add(tmpItemBtn, i);
-            tmpItemTrigger.Number = i;
+            //tmpItemTrigger.Number = i;
 
             tmpItemObj = SetItemObjChildUI(tmpItemObj, i);
             tmpItemBtn = SetItemBtnState(tmpItemBtn);
@@ -197,7 +197,7 @@ public class InventoryUIController : IUserInterface
             if (m_ItemNumber.ContainsKey(item))
             {
                 int choose = m_ItemNumber[item];
-                //TODO:ShowItemInformation(choose);
+                ShowItemInformation(choose);
             }
         });
 
