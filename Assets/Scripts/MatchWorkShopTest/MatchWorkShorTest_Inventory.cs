@@ -49,4 +49,9 @@ public partial class MatchWorkShopTest
         m_InventoryUIController.SetIsItemUpdate(IsItemUpdate);
     }
 
+    public void InventoruUI_Update()
+    {
+        m_InventoryUIController.IsItemUpdate = IsItemUpdate();
+    }
+
 }

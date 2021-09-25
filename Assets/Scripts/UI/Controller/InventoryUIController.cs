@@ -46,11 +46,12 @@ public class InventoryUIController : IUserInterface
 
     private void Update()
     {
-        //TODO:if (IsItemUpdate)
-        //{
-        //    m_ItemObjectPool.HowMuchWantToUse(m_InventoryItems.Count);
-        //    RefreshView();
-        //}
+        m_Update.Invoke();
+
+        if (IsItemUpdate)
+        {
+            RefreshView();
+        }
     }
 
     private void OnEnable()
@@ -196,7 +197,7 @@ public class InventoryUIController : IUserInterface
             if (m_ItemNumber.ContainsKey(item))
             {
                 int choose = m_ItemNumber[item];
-                //TODO:ItemUse
+                //TODO:ShowItemInformation(choose);
             }
         });
 
@@ -209,10 +210,9 @@ public class InventoryUIController : IUserInterface
         m_InventoryItems[itemNum].Amount -= 1;
         if (IsEmpty(m_InventoryItems[itemNum].Amount))
         {
-            //m_ItemObjectPool.RecycleObjs(1);//TODO:ItemObjectPool have logic bug
             Item tmpItem = m_InventoryItems[itemNum];
             m_SetBeUseItems.Invoke(m_InventoryItems);
-            m_InventoryItems.Remove(tmpItem); //TODO:Call InventorySystem?
+            m_InventoryItems.Remove(tmpItem);
             RefreshView();
         }
         else
@@ -221,7 +221,6 @@ public class InventoryUIController : IUserInterface
             m_ItemAmount[itemNum].text = tmpAmount;
             m_ItemInfoAmount.text = tmpAmount;
         }
-        //TODO:UpdateInventorySystemItems
     }
 
     private void ClearList()
