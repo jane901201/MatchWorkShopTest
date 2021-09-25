@@ -51,7 +51,7 @@ public class ItemObjectPool : MonoBehaviour
         if (m_ItemObjs.Count > 0)
         {
             int max = m_ItemObjs.Count;
-            m_Recycle = num; //TODO:Original: m_Recycle += num
+            m_Recycle = num;
             int needToRecycle = max - m_Recycle;
 
             for (int i = (max - 1); i >= needToRecycle; i--)
@@ -90,18 +90,15 @@ public class ItemObjectPool : MonoBehaviour
             int beginReuse = m_AlreadyCreate - m_Recycle;
             
             Debug.Log("Begin reuse " + beginReuse);
-            int alreadyActive = 0;
-            for (int i = beginReuse; i < currectMax - (m_Recycle - needToReuse); i++)//TODO:Original
+            for (int i = beginReuse; i < maxReuse; i++)
             {
-                if(m_ItemObjs[i] != null)
+                if(m_ItemObjs[i] != null && m_Recycle > 0)
                 {
                     m_ItemObjs[i].SetActive(true);
-                    alreadyActive++;
+                    m_Recycle--;
+                    Debug.Log("Recycle " + m_Recycle);
                 }
             }
-            Debug.Log("Recycle" + m_Recycle);
-            m_Recycle -= alreadyActive;
-
         }
         else
         {
