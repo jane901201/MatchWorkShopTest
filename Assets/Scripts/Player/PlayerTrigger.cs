@@ -44,7 +44,7 @@ public class PlayerTrigger : MonoBehaviour
 
     private void End()
     {
-        Debug.Log("End Function");
+        //Debug.Log("End Function");
         m_ShowWantToRestartInfo.Invoke();
     }
 }

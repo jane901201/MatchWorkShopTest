@@ -21,10 +21,12 @@ public class ItemObjectPool : MonoBehaviour
         {
             if (IsSameAsBefore())
             {
-
+                Debug.Log("IsSameAsBefore");
             }
             else if (IsSmallThanNeed())
             {
+                Debug.Log("IsSmallThanNeed");
+
                 if(IsAlreadyCreate())
                 {
                     ReUseObjs();
@@ -33,10 +35,12 @@ public class ItemObjectPool : MonoBehaviour
             }
             else if (IsNeedToHide())
             {
+                Debug.Log("IsNeedToHide");
                 RecycleObjs(m_AlreadyCreate - m_ItemsCount);
             }
             else if (IsAlreadyCreate())
             {
+                Debug.Log("IsAlreadyCreate");
                 ReUseObjs();
             }
             else
@@ -148,7 +152,10 @@ public class ItemObjectPool : MonoBehaviour
 
     private bool IsNeedToHide()
     {
-        if (m_AlreadyCreate > m_ItemsCount)
+        Debug.Log("m_AlreadyCreate " + m_AlreadyCreate);
+        Debug.Log("m_ItemsCount " + m_ItemsCount);
+
+        if (m_AlreadyCreate - m_Recycle > m_ItemsCount)
         {
             return true;
         }

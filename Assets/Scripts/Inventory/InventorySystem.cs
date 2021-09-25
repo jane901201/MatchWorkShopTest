@@ -8,7 +8,7 @@ using UnityEngine;
 public class InventorySystem : MonoBehaviour
 {
     [Header("Player Prefabs")]
-    [SerializeField] private ItemSetting m_InventoryItem;
+    [SerializeField] private ItemSetting m_InventoryItemSetting;
 
     private List<Item> m_GetGettingItems = new List<Item>();//TODO:Field->Local
     private List<Item> m_WillBeUseItems = new List<Item>();
@@ -18,7 +18,7 @@ public class InventorySystem : MonoBehaviour
 
     private void Awake()
     {
-        IsItemUpdate = true; //TODO:Test
+        IsItemUpdate = true;
     }
 
     private void Start()
@@ -28,7 +28,8 @@ public class InventorySystem : MonoBehaviour
 
     public void SetInitinalInventoryItems(List<Item> items)
     {
-        m_InventoryItem.SetInitialItems(items);
+        m_InventoryItemSetting.SetInitialItems(items);
+        SetWillShowItems();
     }
 
     public List<Item> GetInventoryWillBeUseItems()
@@ -38,7 +39,7 @@ public class InventorySystem : MonoBehaviour
 
     public List<Item> GetInventoryItems()
     {
-        return m_InventoryItem.GetItems();
+        return m_InventoryItemSetting.GetItems();
     }
 
     public void SetGettingItem(List<Item> items)
@@ -70,18 +71,18 @@ public class InventorySystem : MonoBehaviour
 
     private void IncreaseItemAmount(Item item, int amount)
     {
-        m_InventoryItem.IncreaseItemAmount(item, amount);
+        m_InventoryItemSetting.IncreaseItemAmount(item, amount);
     }
 
     private void DecreaseItemAmount(Item item, int amount)
     {
-        m_InventoryItem.DecreaseItemAmount(item, amount);
+        m_InventoryItemSetting.DecreaseItemAmount(item, amount);
     }
 
     private void SetWillShowItems()
     {
         m_WillBeUseItems.Clear();
-        List<Item> tmpItems = m_InventoryItem.GetItems();
+        List<Item> tmpItems = m_InventoryItemSetting.GetItems();
         for (int i = 0; i < tmpItems.Count; i++)
         {
             if (tmpItems[i].Amount > 0)

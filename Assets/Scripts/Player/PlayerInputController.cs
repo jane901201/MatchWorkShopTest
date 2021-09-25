@@ -36,9 +36,8 @@ public class PlayerInputController : MonoBehaviour
 
     private void OnJump(InputValue inputValue)
     {
-        Debug.Log("Jump");
+        //Debug.Log("Jump");
         m_Jump = true;
-        //TODO:Jump
     }
 
     public void SetPlayerMap()

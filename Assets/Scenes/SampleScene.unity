@@ -392,7 +392,6 @@ GameObject:
   - component: {fileID: 144986993}
   - component: {fileID: 144986992}
   - component: {fileID: 144986991}
-  - component: {fileID: 144986994}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -504,33 +503,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 144986989}
   m_CullTransparentMesh: 1
---- !u!114 &144986994
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 144986989}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccf6225714e703945aa5de869cef93d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Event:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 182398252}
-        m_TargetAssemblyTypeName: MatchWorkShopTest, Assembly-CSharp
-        m_MethodName: InventoryUI_ShowItemInformation
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &182398250
 GameObject:
   m_ObjectHideFlags: 0
@@ -4170,7 +4142,7 @@ MonoBehaviour:
       m_Information: "\u4E0D\u65B7\u5192\u6CE1\u7684\u4E0D\u77E5\u540D\u7D05\u8272\u85E5\u6C34\uFF0C\u672A\u5C01\u84CB\r"
       m_Amount: 3
     - m_Name: "\u6A59\u8272\u85E5\u6C34 "
-      m_Image: crue_O
+      m_Image: cure_O
       m_Information: "\u4E0D\u65B7\u5192\u6CE1\u7684\u4E0D\u77E5\u540D\u6A59\u8272\u85E5\u6C34\uFF0C\u672A\u5C01\u84CB\r"
       m_Amount: 7
     - m_Name: "\u9EC3\u8272\u85E5\u6C34 "
@@ -7969,7 +7941,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1835418843
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8094,7 +8066,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7ed5582577f0ba4e9e5e79d03a9345b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_InventoryItem: {fileID: 1166667078}
+  m_InventoryItemSetting: {fileID: 1166667078}
 --- !u!1 &1873966484
 GameObject:
   m_ObjectHideFlags: 0

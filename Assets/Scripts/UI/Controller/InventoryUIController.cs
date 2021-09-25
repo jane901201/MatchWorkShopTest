@@ -48,6 +48,8 @@ public class InventoryUIController : IUserInterface
     {
         m_Update.Invoke();
 
+        Debug.Log("InventoryUI must Update" + IsItemUpdate);
+
         if (IsItemUpdate)
         {
             RefreshView();
@@ -111,6 +113,7 @@ public class InventoryUIController : IUserInterface
         m_ItemObjectPool.HowMuchWantToUse(m_InventoryItems.Count);
         SetItemBtn();
         IsItemUpdate = false;
+        m_SetIsItemUpdate.Invoke(IsItemUpdate);
     }
 
     private void SetCloseUIBtn()
@@ -197,6 +200,7 @@ public class InventoryUIController : IUserInterface
             if (m_ItemNumber.ContainsKey(item))
             {
                 int choose = m_ItemNumber[item];
+                m_ItemInformationPanel.SetActive(true);
                 ShowItemInformation(choose);
             }
         });
@@ -207,9 +211,11 @@ public class InventoryUIController : IUserInterface
     private void DecreaseItemAmount(int itemNum)
     {
         IsItemUpdate = true;
+        m_SetIsItemUpdate.Invoke(IsItemUpdate);
         m_InventoryItems[itemNum].Amount -= 1;
         if (IsEmpty(m_InventoryItems[itemNum].Amount))
         {
+            m_ItemInformationPanel.SetActive(false);
             Item tmpItem = m_InventoryItems[itemNum];
             m_SetBeUseItems.Invoke(m_InventoryItems);
             m_InventoryItems.Remove(tmpItem);

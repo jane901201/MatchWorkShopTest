@@ -25,7 +25,7 @@ public partial class MatchWorkShopTest : MonoBehaviour
 
     public void RestartGame()
     {
-        Debug.Log("RestartGame");
+        //Debug.Log("RestartGame");
         m_SaveDataSystem.RecoverData();
         IsItemUpdate(true);
         HideDataCheckInfoUI();
