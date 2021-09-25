@@ -8,4 +8,5 @@ public abstract class IResources
     public abstract void LoadEffect(string EffectName);
     public abstract Sprite LoadSprite(string SpriteName);
     public abstract Sprite LoadItem(string ItemSpriteName);
+    public abstract TextAsset LoadXML(string DataName);
 }

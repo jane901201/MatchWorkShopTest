@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<SaveDataFile xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <InventoryItem>
+    <Item>
+      <ItemName>白巧克力</ItemName>
+      <ItemImageName>choco</ItemImageName>
+      <Amount>0</Amount>
+      <Information>一包已打開的白色巧克力，到期日被劃掉</Information>
+      <MaxAnount>999999</MaxAnount>
+      <MinAmount>0</MinAmount>
+    </Item>
+    <Item>
+      <ItemName>黑巧克力 </ItemName>
+      <ItemImageName>choco_D</ItemImageName>
+      <Amount>2</Amount>
+      <Information>一包已打開的黑色巧克力，到期日被劃掉</Information>
+      <MaxAnount>999999</MaxAnount>
+      <MinAmount>0</MinAmount>
+    </Item>
+    <Item>
+      <ItemName>白色藥水</ItemName>
+      <ItemImageName>cure</ItemImageName>
+      <Amount>0</Amount>
+      <Information>不斷冒泡的不知名白色藥水，未封蓋</Information>
+      <MaxAnount>999999</MaxAnount>
+      <MinAmount>0</MinAmount>
+    </Item>
+    <Item>
+      <ItemName>紅色藥水 </ItemName>
+      <ItemImageName>cure_R</ItemImageName>
+      <Amount>3</Amount>
+      <Information>不斷冒泡的不知名紅色藥水，未封蓋</Information>
+      <MaxAnount>999999</MaxAnount>
+      <MinAmount>0</MinAmount>
+    </Item>
+    <Item>
+      <ItemName>橙色藥水 </ItemName>
+      <ItemImageName>cure_O</ItemImageName>
+      <Amount>7</Amount>
+      <Information>不斷冒泡的不知名橙色藥水，未封蓋</Information>
+      <MaxAnount>999999</MaxAnount>
+      <MinAmount>0</MinAmount>
+    </Item>
+    <Item>
+      <ItemName>黃色藥水 </ItemName>
+      <ItemImageName>cure_Y</ItemImageName>
+      <Amount>1</Amount>
+      <Information>不斷冒泡的不知名黃色藥水，未封蓋</Information>
+      <MaxAnount>999999</MaxAnount>
+      <MinAmount>0</MinAmount>
+    </Item>
+    <Item>
+      <ItemName>綠色藥水 </ItemName>
+      <ItemImageName>cure_G</ItemImageName>
+      <Amount>4</Amount>
+      <Information>不斷冒泡的不知名綠色藥水，未封蓋</Information>
+      <MaxAnount>999999</MaxAnount>
+      <MinAmount>0</MinAmount>
+    </Item>
+    <Item>
+      <ItemName>藍色藥水 </ItemName>
+      <ItemImageName>cure_B</ItemImageName>
+      <Amount>5</Amount>
+      <Information>不斷冒泡的不知名藍色藥水，未封蓋</Information>
+      <MaxAnount>999999</MaxAnount>
+      <MinAmount>0</MinAmount>
+    </Item>
+    <Item>
+      <ItemName>鑰匙</ItemName>
+      <ItemImageName>key</ItemImageName>
+      <Amount>0</Amount>
+      <Information>疑似有防盜芯片的鑰匙</Information>
+      <MaxAnount>999999</MaxAnount>
+      <MinAmount>0</MinAmount>
+    </Item>
+  </InventoryItem>
+</SaveDataFile>

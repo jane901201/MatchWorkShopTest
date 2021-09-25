@@ -6,7 +6,7 @@ public class AssetResources : IResources
     private const string PlayerPath = "Characters/Player/";
     private const string EffectPath = "Effects/";
     private const string SpritePath = "Sprites/";
-    private const string SaveDataPath = "SaveData/";
+    private const string XMLPath = "XML/";
     private const string ItemPath = "Sprites/Item/";
 
     public override GameObject LoadPlayer(string PlayerName)
@@ -56,6 +56,14 @@ public class AssetResources : IResources
             return null;
         }
 
+        return res;
+    }
+
+    public override TextAsset LoadXML(string SaveDataName)
+    {
+        TextAsset res = Resources.Load<TextAsset>(XMLPath + SaveDataName);
+        if (res == null)
+            return null;
         return res;
     }
 }

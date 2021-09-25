@@ -4133,7 +4133,7 @@ MonoBehaviour:
       m_Image: choco_D
       m_Information: "\u4E00\u5305\u5DF2\u6253\u958B\u7684\u9ED1\u8272\u5DE7\u514B\u529B\uFF0C\u5230\u671F\u65E5\u88AB\u5283\u6389\r"
       m_Amount: 2
-    - m_Name: "\u767D\u8272\u85E5\u6C34 "
+    - m_Name: "\u767D\u8272\u85E5\u6C34"
       m_Image: cure
       m_Information: "\u4E0D\u65B7\u5192\u6CE1\u7684\u4E0D\u77E5\u540D\u767D\u8272\u85E5\u6C34\uFF0C\u672A\u5C01\u84CB\r"
       m_Amount: 0
@@ -4161,11 +4161,6 @@ MonoBehaviour:
       m_Image: key
       m_Information: "\u7591\u4F3C\u6709\u9632\u76DC\u82AF\u7247\u7684\u9470\u5319\r"
       m_Amount: 0
-    m_WorldItems:
-    - {fileID: 828584939}
-    - {fileID: 666177876}
-    - {fileID: 1452771178}
-    m_PlayerInitinalTransform: {fileID: 81681064}
   m_SetInitinalInventoryItems:
     m_PersistentCalls:
       m_Calls:
@@ -4182,6 +4177,11 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   m_Player: {fileID: 1956018441}
+  m_StartPoint: {fileID: 81681064}
+  m_WorldItems:
+  - {fileID: 828584939}
+  - {fileID: 666177876}
+  - {fileID: 1452771178}
 --- !u!1 &575937843
 GameObject:
   m_ObjectHideFlags: 0
