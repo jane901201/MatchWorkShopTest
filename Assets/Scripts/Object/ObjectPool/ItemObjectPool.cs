@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 /// <summary>
-/// 先寫個中文備註
-/// 簡單來說是個根據Item大小自動調整物件顯示數量的ObjectPool
+/// 根據Item大小自動調整物件顯示數量的ObjectPool
 /// </summary>
 public class ItemObjectPool : MonoBehaviour
 {
@@ -14,18 +13,7 @@ public class ItemObjectPool : MonoBehaviour
     private int m_AlreadyCreate = 0;
     private int m_Recycle = 0;
 
-    private void OnEnable() //TODO:Test
-    {
-        //HowMuchWantToUse(1); // 1 Button
-        //HowMuchWantToUse(2); // 2 Button
-        //HowMuchWantToUse(2); // 2 Button
-        //HowMuchWantToUse(4); // 4 Button
-        //HowMuchWantToUse(3); // 3 Button
-    }
-
-
-
-    public void HowMuchWantToUse(int num) //TODO:private
+    public void HowMuchWantToUse(int num)
     {
         m_ItemsCount = num;
 
@@ -37,15 +25,19 @@ public class ItemObjectPool : MonoBehaviour
             }
             else if (IsSmallThanNeed())
             {
+                if(IsAlreadyCreate())
+                {
+                    ReUseObjs();
+                }
                 InstantiateItem();
-            }
-            else if (IsAlreadyCreate())
-            {
-                ReUseObjs();
             }
             else if (IsNeedToHide())
             {
                 RecycleObjs(m_AlreadyCreate - m_ItemsCount);
+            }
+            else if (IsAlreadyCreate())
+            {
+                ReUseObjs();
             }
             else
             {
@@ -54,12 +46,12 @@ public class ItemObjectPool : MonoBehaviour
         }
     }
 
-    public void RecycleObjs(int num)
+    private void RecycleObjs(int num)
     {
         if (m_ItemObjs.Count > 0)
         {
             int max = m_ItemObjs.Count;
-            m_Recycle = num;
+            m_Recycle = num; //TODO:Original: m_Recycle += num
             int needToRecycle = max - m_Recycle;
 
             for (int i = (max - 1); i >= needToRecycle; i--)
@@ -72,8 +64,6 @@ public class ItemObjectPool : MonoBehaviour
 
     private void InstantiateItem()
     {
-        //Debug.Log("Already create " + m_AlreadyCreate);
-        //Debug.Log("Will create " + m_ItemsCount);
         for (int i = m_AlreadyCreate; i < m_ItemsCount; i++)
         {
             GameObject obj = Instantiate(m_Item, transform) as GameObject;
@@ -94,15 +84,23 @@ public class ItemObjectPool : MonoBehaviour
     {
         if (m_Recycle > 0)
         {
-            int max = m_ItemObjs.Count;
+            int currectMax = m_ItemObjs.Count;
             int needToReuse = m_ItemsCount;
+            int maxReuse = Mathf.Clamp(needToReuse, 0, currectMax);
             int beginReuse = m_AlreadyCreate - m_Recycle;
-            for (int i = beginReuse; i < max - (m_Recycle - needToReuse); i++)
+            
+            Debug.Log("Begin reuse " + beginReuse);
+            int alreadyActive = 0;
+            for (int i = beginReuse; i < currectMax - (m_Recycle - needToReuse); i++)//TODO:Original
             {
-                m_ItemObjs[i].SetActive(true);
+                if(m_ItemObjs[i] != null)
+                {
+                    m_ItemObjs[i].SetActive(true);
+                    alreadyActive++;
+                }
             }
-
-            m_Recycle -= needToReuse;
+            Debug.Log("Recycle" + m_Recycle);
+            m_Recycle -= alreadyActive;
 
         }
         else
@@ -112,23 +110,10 @@ public class ItemObjectPool : MonoBehaviour
 
     }
 
-
-    //private void DestroyObjs()
-    //{
-    //    int max = m_ItemObjs.Count;
-
-    //    for(int i = max; i > max - m_WillBeDestoryCount; i--)
-    //    {
-    //        GameObject tmp = m_ItemObjs[i];
-    //        m_ItemObjs.Remove(tmp);
-    //        Destroy(tmp);
-    //    }
-    //}
-
     private bool IsSameAsBefore()
     {
         int needItems = m_ItemsCount;
-        if (m_AlreadyCreate == m_ItemsCount)
+        if (m_AlreadyCreate == m_ItemsCount && m_Recycle == 0)
         {
             return true;
         }

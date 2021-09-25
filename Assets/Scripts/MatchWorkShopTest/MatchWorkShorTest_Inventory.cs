@@ -43,7 +43,7 @@ public partial class MatchWorkShopTest
 
     public void InventoryUI_Initialize()
     {
-        List<Item> items = m_InventorySystem.GetInventoryWillShowItems();
+        List<Item> items = m_InventorySystem.GetInventoryWillBeUseItems();
         m_InventoryUIController.SetInventoryItems(items);
         m_InventoryUIController.IsItemUpdate = IsItemUpdate();
         m_InventoryUIController.SetIsItemUpdate(IsItemUpdate);

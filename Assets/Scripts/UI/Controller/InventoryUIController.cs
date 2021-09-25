@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class InventoryUIController : IUserInterface
@@ -16,6 +17,10 @@ public class InventoryUIController : IUserInterface
     [SerializeField] private Image m_ItemInfoImage;
     [SerializeField] private Text m_ItemInfoAmount;
     [SerializeField] private Button m_UseBtn;
+    [SerializeField] private LongClickButton m_LongClickButton;
+
+    [Header("MatchWorkShopTest_Inventory")]
+    [SerializeField] private UnityEvent<List<Item>> m_SetBeUseItems;
 
     private AssetResources m_AssetResources = new AssetResources();
     private Action<bool> m_SetIsItemUpdate;
@@ -53,7 +58,7 @@ public class InventoryUIController : IUserInterface
         if (m_Initialize != null)
         {
             m_Initialize.Invoke();
-            m_ItemObjectPool.HowMuchWantToUse(m_InventoryItems.Count);
+            //m_ItemObjectPool.HowMuchWantToUse(m_InventoryItems.Count);
             //Debug.Log("Button will Show " + (m_InventoryItems.Count));
         }
         if (IsItemUpdate)
@@ -66,6 +71,7 @@ public class InventoryUIController : IUserInterface
     {
         //TODO:Send items information to InventoryManager;
         m_SetIsItemUpdate(IsItemUpdate);
+        m_SetBeUseItems.Invoke(m_InventoryItems);
     }
 
     public override void ShowMainUI()
@@ -100,7 +106,8 @@ public class InventoryUIController : IUserInterface
 
     private void RefreshView()
     {
-
+        Debug.Log("Currect inventory items count " + m_InventoryItems.Count);
+        m_ItemObjectPool.HowMuchWantToUse(m_InventoryItems.Count);
         SetItemBtn();
         IsItemUpdate = false;
     }
@@ -113,6 +120,13 @@ public class InventoryUIController : IUserInterface
     private void SetUseBtn()
     {
         m_UseBtn.onClick.AddListener(() => DecreaseItemAmount(m_CurrectItemNum));
+        m_LongClickButton.SetLongClickEvent(UseCurrectItem);
+    }
+
+    private void UseCurrectItem()
+    {
+        Debug.Log("UseCurrectItem");
+        DecreaseItemAmount(m_CurrectItemNum);
     }
 
     private void SetItemBtn()
@@ -171,9 +185,6 @@ public class InventoryUIController : IUserInterface
 
     private void SetItemChildState(int i)
     {
-        //Debug.Log(m_AssetResources);
-        //Debug.Log(m_InventoryItems[i].ItemImageName);
-        //Debug.Log(m_AssetResources.LoadItem(m_InventoryItems[i].ItemImageName));
         m_ItemImages[i].sprite = m_AssetResources.LoadItem(m_InventoryItems[i].ItemImageName);
         m_ItemAmount[i].text = m_InventoryItems[i].Amount.ToString();
     }
@@ -192,21 +203,15 @@ public class InventoryUIController : IUserInterface
         return item;
     }
 
-    private void UseItem() //TODO:Will be move to other place
-    {
-        IsItemUpdate = true;
-        m_SetIsItemUpdate.Invoke(IsItemUpdate);
-        //TODO:Call DataCheckInfomation
-    }
-
     private void DecreaseItemAmount(int itemNum)
     {
         IsItemUpdate = true;
         m_InventoryItems[itemNum].Amount -= 1;
         if (IsEmpty(m_InventoryItems[itemNum].Amount))
         {
-            m_ItemObjectPool.RecycleObjs(1);
+            //m_ItemObjectPool.RecycleObjs(1);//TODO:ItemObjectPool have logic bug
             Item tmpItem = m_InventoryItems[itemNum];
+            m_SetBeUseItems.Invoke(m_InventoryItems);
             m_InventoryItems.Remove(tmpItem); //TODO:Call InventorySystem?
             RefreshView();
         }

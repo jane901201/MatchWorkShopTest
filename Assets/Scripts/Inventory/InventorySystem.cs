@@ -10,8 +10,8 @@ public class InventorySystem : MonoBehaviour
     [Header("Player Prefabs")]
     [SerializeField] private ItemSetting m_InventoryItem;
 
-    private List<Item> m_GetGettingItems = new List<Item>();
-    private List<Item> m_WillShowItems = new List<Item>();
+    private List<Item> m_GetGettingItems = new List<Item>();//TODO:Field->Local
+    private List<Item> m_WillBeUseItems = new List<Item>();
     private bool m_IsItemUpdate = false;
 
     public bool IsItemUpdate { get => m_IsItemUpdate; set => m_IsItemUpdate = value; }
@@ -31,9 +31,9 @@ public class InventorySystem : MonoBehaviour
         m_InventoryItem.SetInitialItems(items);
     }
 
-    public List<Item> GetInventoryWillShowItems()
+    public List<Item> GetInventoryWillBeUseItems()
     {
-        return m_WillShowItems;
+        return m_WillBeUseItems;
     }
 
     public List<Item> GetInventoryItems()
@@ -59,42 +59,45 @@ public class InventorySystem : MonoBehaviour
     {
         m_IsItemUpdate = true;
         m_GetGettingItems = items;
+        List<Item> tmpInventoryItems = m_WillBeUseItems;
         for(int i = 0; i < m_GetGettingItems.Count; i++)
         {
-            DecreaseItemAmount(m_GetGettingItems[i], m_GetGettingItems[i].Amount);
+            int tmpDecreaseAmount = tmpInventoryItems[i].Amount - m_GetGettingItems[i].Amount;
+            DecreaseItemAmount(m_GetGettingItems[i], tmpDecreaseAmount);
         }
+        SetWillShowItems();
     }
 
-    public void IncreaseItemAmount(Item item, int amount)
+    private void IncreaseItemAmount(Item item, int amount)
     {
         m_InventoryItem.IncreaseItemAmount(item, amount);
     }
 
-    public void DecreaseItemAmount(Item item, int amount)
+    private void DecreaseItemAmount(Item item, int amount)
     {
         m_InventoryItem.DecreaseItemAmount(item, amount);
     }
 
     private void SetWillShowItems()
     {
-        m_WillShowItems.Clear();
+        m_WillBeUseItems.Clear();
         List<Item> tmpItems = m_InventoryItem.GetItems();
         for (int i = 0; i < tmpItems.Count; i++)
         {
             if (tmpItems[i].Amount > 0)
             {
-                m_WillShowItems.Add(tmpItems[i]);
+                m_WillBeUseItems.Add(tmpItems[i]);
             }
         }
 
-        //CurrectWillShowItems();
+        //CurrectWillBeUseItems();
     }
 
-    public void CurrectWillShowItems()
+    private void CurrectWillBeUseItems()
     {
         int i = 0;
         Debug.Log("Currect Will Show Items");
-        foreach (Item item in m_WillShowItems)
+        foreach (Item item in m_WillBeUseItems)
         {
             Debug.Log("Item " + i + " " + item.ItemName + " " + item.Amount);
             i++;
